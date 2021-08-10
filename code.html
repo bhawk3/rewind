@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Brendan Hawk</title>
+    <title>Rewind: A Coding Project By Brendan Hawk</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"> <img src="/img/whitelogo.png"  class="d-inline-block align-text-top"
-             width="70" height="35" > APP NAME</a>
+             width="70" height="35" > Rewind</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/bhawk3/rewind">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="#">About</a>
@@ -55,21 +55,87 @@
 <!-- ==== Main Section ==== -->
 <main class="flex-shrink-0">
     <div class="container py-5 px-5 m-5">
-        <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+        <h2 class="border-1 border-bottom border-dark">The Code for Rewind.</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"> <code class="language-javascript">
-                    // Call Hello World
-                    function HelloWorld() {
-                        alert("Hello World");
-                    }
+//Get the string from the page
+//Controller function
+function getValues() {
+
+    document.getElementById("alert").classList.add("invisible");
+
+    //Get string from page
+    let userString = document.getElementById("userString").value;
+    let revString = reverseString(userString);
+
+    displayString(revString);
+
+}
+
+//Reverse the string
+//Logic function
+function reverseString(userString) {
+
+    let revString = [];
+
+    //let name = Bobby
+    //name[0] = "B";
+    // name[4] = "y";
+    // last position in an array name.length - 1;
+    
+    //reverse a string using a for loop
+    for (let index = userString.length - 1; index >= 0; index--) {
+
+        revString += userString[index];
+        
+    }
+    return revString;
+}
+
+//Display the reversed string to the user
+//View function
+function displayString(revString) {
+
+    //write the message to the page
+    document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`; 
+
+    //turn on the alert box
+    document.getElementById("alert").classList.remove("invisible");
+}
                 </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p> The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                <!-- title-->
+                <h3>Code explaination to the Rewind Project</h3>
+
+                <!-- name of function -->
+                <h5 class="mt-4">getValues Function</h5>
+                <p>This sets the alert from html to invisible because I only want it to appear when
+                    the button is clicked so it has to be invisible until called. Next, I call the userString value
+                    from the html because that is the string that will be reversed. Then, I set the var revString equal
+                    to the reverseString(userString) function so I can call it in that function. If I didn't do this then
+                    userString could not be used in the reverseString function. Lastly, I call the function displayString(revString).
+                </p>
+
+                <!-- name of function -->
+                <h5 class="mt-5">reverseString Function</h5>
+                <p>I first start out in this function with a paramater of userString so I can use that var inside this function
+                    The first var of revString is set to an empty array because an array is going to be used to reverse the string.
+                    Then I used a for loop and set the index equal to the length of the userString (the input value) - 1 because in an
+                    array the first char is 0 so if there is 5 letters in the string the last letter would be a value of 4. So if the index
+                    is great than or equal to 0 then the index--. So then I needed to have revString += to the userString[index] 
+                    (the outcome of the for loop) then I returned the value of the revString.
+               </p>
+
+               <!-- name of function -->
+               <h5 class="mt-5">displayString Function</h5>
+               <p>I first start out in this function with a paramter of reString because I need to be able to use that var in this function.
+                   I then had to get the p tag with an id of msg from the html because that is where im going to display the reversed string so I
+                   used a template literal to display revString so it will simply change as the var value changes. Last, I had to make the alert 
+                   that I made insivible in the first function be visible because we now want to display it.
+               </p>
             </div>
         </div>
     </div>
